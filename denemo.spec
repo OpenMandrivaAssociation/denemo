@@ -13,6 +13,7 @@ Patch1:		denemo-0.7.3-plugin-option.patch
 URL:     	http://denemo.sourceforge.net/
 License: 	GPL
 Group:   	Sound
+BuildRoot: 	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 Requires: 	lilypond
 BuildRequires:	gtk2-devel
 BuildRequires:	libxml2-devel
