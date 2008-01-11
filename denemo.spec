@@ -55,17 +55,6 @@ rm -fr $RPM_BUILD_ROOT/%_includedir
 rm -f $RPM_BUILD_ROOT%{_libdir}/%{name}/*.{a,la}
 
 #menu
-mkdir -p $RPM_BUILD_ROOT%{_menudir}
-cat << EOF > $RPM_BUILD_ROOT%{_menudir}/%{name}
-?package(%{name}): \
- command="%{name}" \
- icon="sound_section.png" \
- needs="x11" \
- title="Denemo" \
- longtitle="Musical score editor" \
- section="Multimedia/Sound" \
- xdg="true"
-EOF
 
 desktop-file-install --vendor="" \
   --remove-category="Application" \
@@ -94,7 +83,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/%{name}
 %{_datadir}/applications/%{name}.desktop
 %{_libdir}/%{name}
-%{_menudir}/%{name}
 %{_iconsdir}/%{name}.png
 
 
