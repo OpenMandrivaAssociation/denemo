@@ -1,4 +1,4 @@
-%define version 0.7.6
+%define version 0.7.9
 #define beta beta1
 %{?beta:%global release %mkrel -c %beta 1}
 %{?!beta:%global release %mkrel 1}
@@ -7,11 +7,11 @@ Summary: 	WYSIWYG musical score editor and frontend for Lilypond
 Name: 	 	denemo
 Version: 	%{version}
 Release: 	%{release}
-Source0: 	http://prdownloads.sourceforge.net/%{name}/%{name}-%{version}%{?beta:%beta}.tar.bz2
+Source0: 	http://prdownloads.sourceforge.net/%{name}/%{name}-%{version}%{?beta:%beta}.tar.gz
 Patch0:		denemo-0.7.4-gettext.patch
-Patch1:		denemo-0.7.3-plugin-option.patch
+#Patch1:		denemo-0.7.3-plugin-option.patch
 URL:     	http://denemo.sourceforge.net/
-License: 	GPL
+License: 	GPLv2+
 Group:   	Sound
 BuildRoot: 	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 Requires: 	lilypond
@@ -23,6 +23,7 @@ BuildRequires:	automake1.8
 BuildRequires:	gettext-devel
 BuildRequires:	desktop-file-utils
 BuildRequires:  cvs
+BuildRequires:  aubio-devel
 
 %description
 Denemo is the GNU graphical musical score editor, and serves as a frontend
@@ -32,7 +33,7 @@ as well as handling Csound score files playback and MIDI playback.
 %prep
 %setup -q -n %{name}-%{version}%{?beta:%beta}
 %patch0 -p1 -b .gettext
-%patch1 -p1 -b .plugin
+#%patch1 -p1 -b .plugin
 
 # regen everything because of patch
 ACLOCAL=aclocal-1.8 AUTOMAKE=automake-1.8 autoreconf --force --install
@@ -40,7 +41,7 @@ ACLOCAL=aclocal-1.8 AUTOMAKE=automake-1.8 autoreconf --force --install
 
 %build
 %configure2_5x \
-	--sysconfdir=%{_sysconfdir}/%{name} \
+	--sysconfdir=%{_sysconfdir} \
 	--enable-gtk2 \
 	--with-plugins=analysis
 
@@ -81,13 +82,15 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f %name.lang
 %defattr(-,root,root)
-%doc AUTHORS ChangeLog DESIGN* GOALS NEWS README* TODO
+%doc AUTHORS ChangeLog NEWS README*
 %{_bindir}/%{name}
-#%config(noreplace) %{_sysconfdir}/%{name}
+%config(noreplace) %{_sysconfdir}/%{name}
 %{_datadir}/%{name}
+%{_datadir}/fonts/truetype/%{name}/Denemo.ttf
 %{_datadir}/applications/%{name}.desktop
-%{_libdir}/%{name}
+#%{_libdir}/%{name}
 %{_iconsdir}/%{name}.png
+
 
 
 
