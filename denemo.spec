@@ -24,6 +24,7 @@ BuildRequires:	gettext-devel
 BuildRequires:	desktop-file-utils
 BuildRequires:  cvs
 BuildRequires:  aubio-devel
+BuildRequires:  portaudio-devel
 
 %description
 Denemo is the GNU graphical musical score editor, and serves as a frontend
@@ -60,7 +61,6 @@ rm -f $RPM_BUILD_ROOT%{_libdir}/%{name}/*.{a,la}
 desktop-file-install --vendor="" \
   --remove-category="Application" \
   --add-category="GTK" \
-  --add-category="X-Mandrakelinux-Multimedia-Sound" \
   --dir $RPM_BUILD_ROOT%{_datadir}/applications $RPM_BUILD_ROOT%{_datadir}/applications/*
 
 # remove unneeded files
