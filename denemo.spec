@@ -1,7 +1,7 @@
 %define version 0.8.2
 #define beta beta1
 %{?beta:%global release %mkrel -c %beta 1}
-%{?!beta:%global release %mkrel 1}
+%{?!beta:%global release %mkrel 2}
 
 Summary: 	WYSIWYG musical score editor and frontend for Lilypond
 Name: 	 	denemo
@@ -14,7 +14,7 @@ License: 	GPLv2+
 Group:   	Sound
 BuildRoot: 	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 Requires: 	lilypond
-Requires: 	timidity++
+Requires: 	TiMidity++
 BuildRequires:	gtk2-devel
 BuildRequires:	libxml2-devel
 BuildRequires:	bison
