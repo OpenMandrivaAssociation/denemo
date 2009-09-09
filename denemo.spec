@@ -1,15 +1,15 @@
-%define version 0.8.2
+%define version 0.8.8
 #define beta beta1
 %{?beta:%global release %mkrel -c %beta 1}
-%{?!beta:%global release %mkrel 2}
+%{?!beta:%global release %mkrel 1}
 
 Summary: 	WYSIWYG musical score editor and frontend for Lilypond
 Name: 	 	denemo
 Version: 	%{version}
 Release: 	%{release}
 Source0: 	http://download.savannah.gnu.org/releases/%{name}/%{name}-%{version}%{?beta:%beta}.tar.gz
-#Patch0:		denemo-0.7.4-gettext.patch
 URL:     	http://www.denemo.org/
+Patch0:		denemo-0.8.8-fix-str-fmt.patch
 License: 	GPLv2+
 Group:   	Sound
 BuildRoot: 	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
@@ -25,6 +25,7 @@ BuildRequires:  cvs
 BuildRequires:  aubio-devel
 BuildRequires:  portaudio-devel
 BuildRequires:  guile-devel
+BuildRequires:  fftw-devel
 
 %description
 Denemo is the GNU graphical musical score editor, and serves as a frontend
@@ -33,10 +34,7 @@ as well as handling Csound score files playback and MIDI playback.
 
 %prep
 %setup -q -n %{name}-%{version}%{?beta:%beta}
-#%patch0 -p1 -b .gettext
-
-# regen everything because of patch
-#ACLOCAL=aclocal-1.8 AUTOMAKE=automake-1.8 autoreconf --force --install
+%patch0 -p0
 
 %build
 %configure2_5x \
@@ -81,11 +79,12 @@ rm -rf %{buildroot}
 %defattr(-,root,root)
 %doc AUTHORS ChangeLog NEWS README*
 %{_bindir}/%{name}
+%{_bindir}/smfsh
 %config(noreplace) %{_sysconfdir}/%{name}
 %{_datadir}/%{name}
-%{_datadir}/fonts/truetype/%{name}/Denemo.ttf
+%{_datadir}/fonts/truetype/%{name}/*
 %{_datadir}/applications/%{name}.desktop
-%{_iconsdir}/%{name}.png
+%{_datadir}/pixmaps/%{name}.png
 
 
 
