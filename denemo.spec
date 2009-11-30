@@ -26,6 +26,7 @@ BuildRequires:  aubio-devel
 BuildRequires:  portaudio-devel
 BuildRequires:  guile-devel
 BuildRequires:  fftw-devel
+BuildRequires:	libgtksourceview-2.0-devel
 
 %description
 Denemo is the GNU graphical musical score editor, and serves as a frontend
