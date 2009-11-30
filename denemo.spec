@@ -1,4 +1,4 @@
-%define version 0.8.8
+%define version 0.8.10
 #define beta beta1
 %{?beta:%global release %mkrel -c %beta 1}
 %{?!beta:%global release %mkrel 1}
