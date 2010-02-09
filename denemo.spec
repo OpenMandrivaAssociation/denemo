@@ -16,6 +16,7 @@ Requires:	fluidsynth
 Patch0:		denemo-0.8.8-fix-str-fmt.patch
 BuildRequires:	gtk2-devel
 BuildRequires:	libxml2-devel
+BuildRequires: 	libfluidsynth-devel
 BuildRequires:	bison
 BuildRequires:	flex
 BuildRequires:	gettext-devel
