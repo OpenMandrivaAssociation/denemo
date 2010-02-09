@@ -1,5 +1,5 @@
 %define version 0.8.12
-%define rel	2	
+%define rel	1	
 
 Summary: 	WYSIWYG musical score editor and frontend for Lilypond
 Name: 	 	denemo
