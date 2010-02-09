@@ -1,5 +1,5 @@
 %define version 0.8.12
-%define rel	1
+%define rel	2	
 
 Summary: 	WYSIWYG musical score editor and frontend for Lilypond
 Name: 	 	denemo
@@ -7,12 +7,13 @@ Version: 	%{version}
 Release: 	%mkrel %{rel}
 Source0: 	http://download.savannah.gnu.org/releases/denemo/%{name}-%{version}.tar.gz
 URL:     	http://www.denemo.org/
-Patch0:		denemo-0.8.8-fix-str-fmt.patch
 License: 	GPLv2+
 Group:   	Sound
 BuildRoot: 	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 Requires: 	lilypond
 Requires: 	TiMidity++
+Requires:	fluidsynth
+Patch0:		denemo-0.8.8-fix-str-fmt.patch
 BuildRequires:	gtk2-devel
 BuildRequires:	libxml2-devel
 BuildRequires:	bison
