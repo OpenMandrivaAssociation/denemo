@@ -1,13 +1,11 @@
-%define version 0.8.10
-#define beta beta1
-%{?beta:%global release %mkrel -c %beta 1}
-%{?!beta:%global release %mkrel 1}
+%define version 0.8.12
+%define release	1
 
 Summary: 	WYSIWYG musical score editor and frontend for Lilypond
 Name: 	 	denemo
 Version: 	%{version}
 Release: 	%{release}
-Source0: 	http://download.savannah.gnu.org/releases/%{name}/%{name}-%{version}%{?beta:%beta}.tar.gz
+Source0: 	http://download.savannah.gnu.org/releases/denemo/%{name}-%{version}.tar.gz
 URL:     	http://www.denemo.org/
 Patch0:		denemo-0.8.8-fix-str-fmt.patch
 License: 	GPLv2+
@@ -34,7 +32,7 @@ to Lilypond. Besides lilypond, it can also export music into ABC format.
 as well as handling Csound score files playback and MIDI playback.
 
 %prep
-%setup -q -n %{name}-%{version}%{?beta:%beta}
+%setup -q -n %{name}-%{version}
 %patch0 -p0
 
 %build
