@@ -1,10 +1,7 @@
-%define version 0.8.14
-%define rel	1	
-
 Summary: 	WYSIWYG musical score editor and frontend for Lilypond
 Name: 	 	denemo
-Version: 	%{version}
-Release: 	%mkrel %{rel}
+Version: 	0.8.14
+Release: 	%mkrel 2
 Source0: 	http://ftp.gnu.org/gnu/denemo/%{name}-%{version}.tar.gz
 URL:     	http://www.denemo.org/
 License: 	GPLv2+
@@ -37,44 +34,29 @@ as well as handling Csound score files playback and MIDI playback.
 %prep
 %setup -q -n %{name}-%{version}
 %patch0 -p0
+
 %build
 %configure2_5x \
 	--sysconfdir=%{_sysconfdir} \
 	--enable-gtk2 \
 	--with-plugins=analysis
-
 %make
 
 %install
 rm -rf %{buildroot}
 %makeinstall_std
 
-# remove unneeded files
 rm -fr %{buildroot}/%_includedir
 rm -f %{buildroot}%{_libdir}/%{name}/*.{a,la}
-
-#menu
 
 desktop-file-install --vendor="" \
   --remove-category="Application" \
   --add-category="GTK" \
   --dir %{buildroot}%{_datadir}/applications %{buildroot}%{_datadir}/applications/*
-
-
 %find_lang %name
 
 %clean
 rm -rf %{buildroot}
-
-%if %mdkversion < 200900
-%post
-%update_menus
-%endif
-
-%if %mdkversion < 200900
-%postun
-%clean_menus
-%endif
 
 %files -f %name.lang
 %defattr(-,root,root)
@@ -86,7 +68,3 @@ rm -rf %{buildroot}
 %{_datadir}/fonts/truetype/%{name}/*
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/pixmaps/%{name}.png
-
-
-
-
