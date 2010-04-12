@@ -1,7 +1,7 @@
 Summary: 	WYSIWYG musical score editor and frontend for Lilypond
 Name: 	 	denemo
-Version: 	0.8.14
-Release: 	%mkrel 2
+Version: 	0.8.16
+Release: 	%mkrel 1
 Source0: 	http://ftp.gnu.org/gnu/denemo/%{name}-%{version}.tar.gz
 URL:     	http://www.denemo.org/
 License: 	GPLv2+
@@ -10,8 +10,6 @@ BuildRoot: 	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 Requires: 	lilypond
 Requires: 	TiMidity++
 Requires:	fluidsynth
-#patch0 was sent upstream (kharec)
-Patch0:		denemo-0.8.14-fix-str-fmt.patch
 BuildRequires:	gtk2-devel
 BuildRequires:	libxml2-devel
 BuildRequires: 	libfluidsynth-devel
@@ -32,8 +30,7 @@ to Lilypond. Besides lilypond, it can also export music into ABC format.
 as well as handling Csound score files playback and MIDI playback.
 
 %prep
-%setup -q -n %{name}-%{version}
-%patch0 -p0
+%setup -q 
 
 %build
 %configure2_5x \
@@ -63,8 +60,10 @@ rm -rf %{buildroot}
 %doc AUTHORS ChangeLog NEWS README*
 %{_bindir}/%{name}
 %{_bindir}/smfsh
+%{_bindir}/denemo-lilypond.bat
 %config(noreplace) %{_sysconfdir}/%{name}
 %{_datadir}/%{name}
 %{_datadir}/fonts/truetype/%{name}/*
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/pixmaps/%{name}.png
+
