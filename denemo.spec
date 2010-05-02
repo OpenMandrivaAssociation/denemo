@@ -1,7 +1,7 @@
 Summary: 	WYSIWYG musical score editor and frontend for Lilypond
 Name: 	 	denemo
 Version: 	0.8.16
-Release: 	%mkrel 1
+Release: 	%mkrel 2
 Source0: 	http://ftp.gnu.org/gnu/denemo/%{name}-%{version}.tar.gz
 URL:     	http://www.denemo.org/
 License: 	GPLv2+
@@ -9,6 +9,7 @@ Group:   	Sound
 BuildRoot: 	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 Requires: 	lilypond
 Requires: 	TiMidity++
+Requires:	playmidi
 Requires:	fluidsynth
 BuildRequires:	gtk2-devel
 BuildRequires:	libxml2-devel
