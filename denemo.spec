@@ -15,7 +15,7 @@ BuildRequires:	gtk2-devel
 BuildRequires:	libxml2-devel
 BuildRequires: 	libfluidsynth-devel
 BuildRequires:	bison
-BuildRequires:	librsvg
+BuildRequires:	librsvg-devel
 BuildRequires:	flex
 BuildRequires:	gettext-devel
 BuildRequires:	desktop-file-utils
