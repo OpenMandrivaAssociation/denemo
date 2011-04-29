@@ -1,8 +1,8 @@
 Summary: 	WYSIWYG musical score editor and frontend for Lilypond
 Name: 	 	denemo
-Version: 	0.8.22
+Version: 	0.9.0
 Release: 	%mkrel 1
-Source0: 	http://ftp.gnu.org/gnu/denemo/%{name}-%{version}.tar.gz
+Source0: 	ftp://ftp.gnu.org/gnu/denemo/%{name}-%{version}.tar.gz
 URL:     	http://www.denemo.org/
 License: 	GPLv2+
 Group:   	Sound
@@ -61,7 +61,7 @@ rm -rf %{buildroot}
 %defattr(-,root,root)
 %doc AUTHORS ChangeLog NEWS README*
 %{_bindir}/%{name}
-%{_bindir}/smfsh
+#%{_bindir}/smfsh
 #%{_bindir}/denemo-lilypond.bat
 %config(noreplace) %{_sysconfdir}/%{name}
 %{_datadir}/%{name}
