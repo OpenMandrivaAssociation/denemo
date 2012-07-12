@@ -1,14 +1,13 @@
 Summary:	WYSIWYG musical score editor and frontend for Lilypond
 Name:		denemo
-Version:	0.9.2
-Release:	%mkrel 1
+Version:	0.9.4
+Release:	1
 Source0:	ftp://ftp.gnu.org/gnu/denemo/%{name}-%{version}.tar.gz
 Patch0:		denemo-0.9.2-fix-str-fmt.patch
 Patch1:		denemo-0.9.2-glib.patch
 URL:		http://www.denemo.org/
 License:	GPLv2+
 Group:		Sound
-BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 Requires:	lilypond
 Requires:	TiMidity++
 Requires:	playmidi
@@ -35,7 +34,7 @@ as well as handling Csound score files playback and MIDI playback.
 
 %prep
 %setup -q
-%patch0 -p0
+#%patch0 -p0
 %patch1 -p0
 
 %build
@@ -55,11 +54,7 @@ desktop-file-install --vendor="" \
   --dir %{buildroot}%{_datadir}/applications %{buildroot}%{_datadir}/applications/*
 %find_lang %name
 
-%clean
-rm -rf %{buildroot}
-
 %files -f %name.lang
-%defattr(-,root,root)
 %doc AUTHORS ChangeLog NEWS README*
 %{_bindir}/%{name}
 %config(noreplace) %{_sysconfdir}/%{name}
