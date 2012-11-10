@@ -1,0 +1,15 @@
+--- src/print.c.str	2011-12-29 04:04:56.014762094 +0100
++++ src/print.c	2011-12-29 04:05:16.717493076 +0100
+@@ -1210,10 +1210,10 @@
+            
+             gchar *mt = g_strdup_printf("%u", mtime);
+             if(!gdk_pixbuf_save (pbN, thumbpathN, "png"/*type*/, &err, "tEXt::Thumb::URI", uri, "tEXt::Thumb::MTime", mt , NULL))
+-              g_print(err->message);
++              g_print("%s", err->message);
+             err = NULL;
+             if(!gdk_pixbuf_save (pbL, thumbpathL, "png"/*type*/, &err, "tEXt::Thumb::URI", uri, "tEXt::Thumb::MTime", mt , NULL))
+-              g_print(err->message);
++              g_print("%s", err->message);
+ 
+               //FIXME do the pbN L need freeing???
+             g_free(uri);
