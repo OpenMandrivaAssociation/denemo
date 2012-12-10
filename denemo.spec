@@ -1,31 +1,29 @@
 Summary:	WYSIWYG musical score editor and frontend for Lilypond
 Name:		denemo
-Version:	0.9.4
+Version:	0.9.6
 Release:	1
-Source0:	ftp://ftp.gnu.org/gnu/denemo/%{name}-%{version}.tar.gz
-Patch0:		denemo-0.9.2-fix-str-fmt.patch
-Patch1:		denemo-0.9.2-glib.patch
-URL:		http://www.denemo.org/
 License:	GPLv2+
 Group:		Sound
-Requires:	lilypond
-Requires:	TiMidity++
-Requires:	playmidi
-Requires:	fluidsynth
-BuildRequires:	gtk2-devel
-BuildRequires:	libxml2-devel
-BuildRequires: 	libfluidsynth-devel
-BuildRequires:	bison
-BuildRequires:	librsvg-devel
-BuildRequires:	flex
-BuildRequires:	gettext-devel
+URL:		http://www.denemo.org/
+Source0:	http://ftp.gnu.org/gnu/denemo/%{name}-%{version}.tar.gz
+BuildRequires:	pkgconfig(aubio)
+BuildRequires:	pkgconfig(evince-view-3.0)
+BuildRequires:	pkgconfig(fftw3)
+BuildRequires:	pkgconfig(fluidsynth)
+BuildRequires:	pkgconfig(fontconfig)
+BuildRequires:	pkgconfig(gtk+-2.0)
+BuildRequires:	pkgconfig(gtksourceview-3.0)
+BuildRequires:	pkgconfig(guile-1.8)
+BuildRequires:	pkgconfig(librsvg-2.0)
+BuildRequires:	pkgconfig(libxml-2.0)
+BuildRequires:	pkgconfig(portaudio-2.0)
+BuildRequires:	pkgconfig(samplerate)
+BuildRequires:	portmidi-devel
 BuildRequires:	desktop-file-utils
-BuildRequires:	cvs
-BuildRequires:	aubio-devel
-BuildRequires:	portaudio-devel
-BuildRequires:	guile-devel
-BuildRequires:	fftw-devel
-BuildRequires:	libgtksourceview-2.0-devel
+Requires:	fluidsynth
+Requires:	lilypond
+Requires:	playmidi
+Requires:	TiMidity++
 
 %description
 Denemo is the GNU graphical musical score editor, and serves as a frontend
@@ -34,29 +32,25 @@ as well as handling Csound score files playback and MIDI playback.
 
 %prep
 %setup -q
-#%patch0 -p0
-%patch1 -p0
 
 %build
-%configure2_5x --with-included-smf
+%configure2_5x --disable-static --with-included-smf
 %make
 
 %install
-rm -rf %{buildroot}
 %makeinstall_std
-
-rm -fr %{buildroot}/%{_includedir}
-rm -f %{buildroot}%{_libdir}/%{name}/*.{a,la}
 
 desktop-file-install --vendor="" \
   --remove-category="Application" \
   --add-category="GTK" \
   --dir %{buildroot}%{_datadir}/applications %{buildroot}%{_datadir}/applications/*
-%find_lang %name
 
-%files -f %name.lang
+%find_lang %{name}
+
+%files -f %{name}.lang
 %doc AUTHORS ChangeLog NEWS README*
 %{_bindir}/%{name}
+%{_bindir}/denemo_file_update.sh
 %config(noreplace) %{_sysconfdir}/%{name}
 %{_datadir}/%{name}
 %{_datadir}/fonts/truetype/%{name}/*
