@@ -1,17 +1,18 @@
+%define Werror_cflags %nil
 Summary:	WYSIWYG musical score editor and frontend for Lilypond
 Name:		denemo
-Version:	0.9.6
+Version:	1.0.2
 Release:	1
 License:	GPLv2+
 Group:		Sound
-URL:		http://www.denemo.org/
+URL:		http://www.denemo.org/HomePage
 Source0:	http://ftp.gnu.org/gnu/denemo/%{name}-%{version}.tar.gz
 BuildRequires:	pkgconfig(aubio)
 BuildRequires:	pkgconfig(evince-view-3.0)
 BuildRequires:	pkgconfig(fftw3)
 BuildRequires:	pkgconfig(fluidsynth)
 BuildRequires:	pkgconfig(fontconfig)
-BuildRequires:	pkgconfig(gtk+-2.0)
+BuildRequires:	pkgconfig(gtk+-3.0)
 BuildRequires:	pkgconfig(gtksourceview-3.0)
 BuildRequires:	pkgconfig(guile-1.8)
 BuildRequires:	pkgconfig(librsvg-2.0)
@@ -32,9 +33,15 @@ as well as handling Csound score files playback and MIDI playback.
 
 %prep
 %setup -q
+# fix debug linting
+chmod a-x src/portmidiutil.h
+chmod a-x src/portmidiutil.c
+
+
 
 %build
-%configure2_5x --disable-static --with-included-smf
+%configure2_5x --disable-static --with-included-smf 
+perl -pi -e "s|-lporttime||" src/Makefile
 %make
 
 %install
@@ -44,6 +51,9 @@ desktop-file-install --vendor="" \
   --remove-category="Application" \
   --add-category="GTK" \
   --dir %{buildroot}%{_datadir}/applications %{buildroot}%{_datadir}/applications/*
+
+
+
 
 %find_lang %{name}
 
@@ -56,4 +66,3 @@ desktop-file-install --vendor="" \
 %{_datadir}/fonts/truetype/%{name}/*
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/pixmaps/%{name}.png
-
