@@ -6,6 +6,7 @@ License:	GPLv2+
 Group:		Sound
 URL:		http://www.denemo.org/
 Source0:	http://ftp.gnu.org/gnu/denemo/%{name}-%{version}.tar.gz
+BuildRequires:	intltool
 BuildRequires:	pkgconfig(aubio)
 BuildRequires:	pkgconfig(evince-view-3.0)
 BuildRequires:	pkgconfig(fftw3)
