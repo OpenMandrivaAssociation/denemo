@@ -1,2 +1,4 @@
+removed_sources:
+  denemo-0.9.6.tar.gz: 49119cc1e4415e5d111ec26630a9abf99183b003
 sources:
-  "denemo-0.9.6.tar.gz": 49119cc1e4415e5d111ec26630a9abf99183b003
+  denemo-1.1.8.tar.gz: a88f6f67c24b95a0ca5d3eebbc4c656c73675ed5

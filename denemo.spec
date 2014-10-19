@@ -1,6 +1,6 @@
 Summary:	WYSIWYG musical score editor and frontend for Lilypond
 Name:		denemo
-Version:	0.9.6
+Version:	1.1.8
 Release:	1
 License:	GPLv2+
 Group:		Sound
@@ -11,10 +11,11 @@ BuildRequires:	pkgconfig(evince-view-3.0)
 BuildRequires:	pkgconfig(fftw3)
 BuildRequires:	pkgconfig(fluidsynth)
 BuildRequires:	pkgconfig(fontconfig)
-BuildRequires:	pkgconfig(gtk+-2.0)
+BuildRequires:	pkgconfig(gtk+-3.0)
 BuildRequires:	pkgconfig(gtksourceview-3.0)
-BuildRequires:	pkgconfig(guile-1.8)
+BuildRequires:	pkgconfig(guile-2.0)
 BuildRequires:	pkgconfig(librsvg-2.0)
+BuildRequires:	pkgconfig(rubberband)
 BuildRequires:	pkgconfig(libxml-2.0)
 BuildRequires:	pkgconfig(portaudio-2.0)
 BuildRequires:	pkgconfig(samplerate)
@@ -34,7 +35,10 @@ as well as handling Csound score files playback and MIDI playback.
 %setup -q
 
 %build
-%configure2_5x --disable-static --with-included-smf
+%configure \
+	 --with-included-smf \
+	 --enable-guile_2_0 \
+	 --enable-gtk3
 %make
 
 %install
@@ -48,10 +52,12 @@ desktop-file-install --vendor="" \
 %find_lang %{name}
 
 %files -f %{name}.lang
-%doc AUTHORS ChangeLog NEWS README*
+%doc AUTHORS ChangeLog NEWS
 %{_bindir}/%{name}
-%{_bindir}/denemo_file_update.sh
-%config(noreplace) %{_sysconfdir}/%{name}
+%{_bindir}/cairo_svg2path
+%{_bindir}/denemo_file_update
+%{_bindir}/generate_source
+%{_datadir}/appdata/denemo.appdata.xml
 %{_datadir}/%{name}
 %{_datadir}/fonts/truetype/%{name}/*
 %{_datadir}/applications/%{name}.desktop
