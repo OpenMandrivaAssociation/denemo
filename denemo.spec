@@ -1,7 +1,7 @@
 Summary:	WYSIWYG musical score editor and frontend for Lilypond
 Name:		denemo
 Version:	1.1.8
-Release:	1
+Release:	2
 License:	GPLv2+
 Group:		Sound
 URL:		http://www.denemo.org/
