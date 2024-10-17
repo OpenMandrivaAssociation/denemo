@@ -4,7 +4,7 @@ Version:	1.1.8
 Release:	2
 License:	GPLv2+
 Group:		Sound
-URL:		http://www.denemo.org/
+URL:		https://www.denemo.org/
 Source0:	http://ftp.gnu.org/gnu/denemo/%{name}-%{version}.tar.gz
 BuildRequires:	intltool
 BuildRequires:	pkgconfig(aubio)
