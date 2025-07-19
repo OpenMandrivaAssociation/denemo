@@ -1,0 +1,12 @@
+diff -rupN denemo-2.6.0.old/libs/libsffile/sffile.c denemo-2.6.0/libs/libsffile/sffile.c
+--- denemo-2.6.0.old/libs/libsffile/sffile.c	2025-07-19 21:14:50.580059556 +0200
++++ denemo-2.6.0/libs/libsffile/sffile.c	2025-07-19 21:25:03.830984145 +0200
+@@ -52,7 +52,7 @@ static void ConvertIllegalChar(char *nam
+ int  ParseSoundfont(char *soundfont, int index, char **name, int *preset, int *bank) {
+   FILE *fp;
+   static SFInfo sf;
+-  static initialized = FALSE;
++  static int initialized = FALSE;
+   int i;
+   int number = 0;
+   if(soundfont) {

@@ -1,0 +1,11 @@
+diff -rupN denemo-2.6.0.old/libs/libsffile/sffile.c denemo-2.6.0/libs/libsffile/sffile.c
+--- denemo-2.6.0.old/libs/libsffile/sffile.c	2022-03-11 13:15:53.387874374 +0100
++++ denemo-2.6.0/libs/libsffile/sffile.c	2025-07-19 21:14:50.580059556 +0200
+@@ -23,6 +23,7 @@
+ #include <stdio.h>
+ #include <string.h>
+ #include <stdlib.h>
++#include <ctype.h>
+ #include "sffile.h"
+ #include "sf_util.h"
+ 

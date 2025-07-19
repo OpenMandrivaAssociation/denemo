@@ -1,0 +1,12 @@
+diff -rupN denemo-2.6.0.old/pixmaps/org.denemo.Denemo.desktop denemo-2.6.0/pixmaps/org.denemo.Denemo.desktop
+--- denemo-2.6.0.old/pixmaps/org.denemo.Denemo.desktop	2022-03-11 13:15:53.401207722 +0100
++++ denemo-2.6.0/pixmaps/org.denemo.Denemo.desktop	2022-05-21 14:52:23.509113577 +0200
+@@ -4,7 +4,7 @@ Icon=org.denemo.Denemo
+ StartupNotify=true
+ Terminal=false
+ Type=Application
+-Categories=GNOME;Audio;AudioVideo;Music;Education;
++Categories=GNOME;GTK;Audio;AudioVideo;Music;Education;
+ MimeType=audio/midi;application/denemo;
+ 
+ Name=GNU Denemo
