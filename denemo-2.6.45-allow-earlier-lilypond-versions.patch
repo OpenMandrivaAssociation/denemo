@@ -1,0 +1,14 @@
+diff -rupN denemo-2.6.45.old/actions/menus/ObjectMenu/Directives/Barlines/RepeatEndStart.scm denemo-2.6.45/actions/menus/ObjectMenu/Directives/Barlines/RepeatEndStart.scm
+--- denemo-2.6.45.old/actions/menus/ObjectMenu/Directives/Barlines/RepeatEndStart.scm	2025-04-21 16:04:53.000000000 +0200
++++ denemo-2.6.45/actions/menus/ObjectMenu/Directives/Barlines/RepeatEndStart.scm	2025-07-19 22:13:54.630806203 +0200
+@@ -1,4 +1,7 @@
+ ;;;RepeatEndStart
+-(StandAloneSelfEditDirective (cons "RepeatEndStart" "\\bar \":..:\"") #f "RepeatEndStart" #f 50)
++(if (d-CheckLilyVersion "2.20.0")
++	(StandAloneSelfEditDirective (cons "RepeatStart" "\\bar \".|:-|\"") #t "RepeatStart")
++	(StandAloneSelfEditDirective (cons "RepeatStart" "\\bar \".|:\"") #t "RepeatStart"))
+ (d-DirectivePut-standalone-gx "RepeatEndStart" 25)
+-(d-MoveCursorRight)
+\ Manca newline alla fine del file
++(d-MoveCursorRight)
++

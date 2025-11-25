@@ -1,0 +1,11 @@
+diff -rupN denemo-2.6.45.old/src/scripting/scheme-callbacks.c denemo-2.6.45/src/scripting/scheme-callbacks.c
+--- denemo-2.6.45.old/src/scripting/scheme-callbacks.c	2025-04-21 16:04:53.000000000 +0200
++++ denemo-2.6.45/src/scripting/scheme-callbacks.c	2025-07-19 22:34:41.200247551 +0200
+@@ -11,6 +11,7 @@
+ #include "command/select.h"
+ #include "command/score.h"
+ #include "command/scorelayout.h"
++#include "display/displayanimation.h"
+ #include "core/cache.h"
+ #include "core/utils.h"
+ #include "core/menusystem.h"
