@@ -15,6 +15,11 @@ Patch0:	denemo-2.6.0-fix-desktop-file.patch
 Patch1:	denemo-2.6.45-allow-earlier-lilypond-versions.patch
 Patch2:	denemo-2.6.45-fix-missing-include.patch
 Patch3:	denemo-2.6.48-workaround-msgfmt-error.patch
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires:	bison
 BuildRequires:	chrpath
 BuildRequires:	flex
