@@ -3,7 +3,7 @@
 
 Summary:	WYSIWYG musical score editor and frontend for Lilypond
 Name:	denemo
-Version:	2.6.48
+Version:	2.6.51
 Release:	1
 License:	GPLv2+
 Group:	Sound
@@ -34,7 +34,8 @@ BuildRequires:pkgconfig(atril-view-1.5.0)
 BuildRequires:	pkgconfig(aubio)
 BuildRequires:	pkgconfig(cairo)
 BuildRequires:	pkgconfig(dbus-1)
-BuildRequires:	pkgconfig(evince-view-4.0)
+# Evince 4.0 (49) is not supported ATM
+#BuildRequires:	pkgconfig(evince-view-4.0)
 BuildRequires:	pkgconfig(fftw3)
 BuildRequires:	pkgconfig(fluidsynth)
 BuildRequires:	pkgconfig(fontconfig)
@@ -102,6 +103,7 @@ install -m 0644 %{SOURCE1} .
 
 %build
 ./autogen.sh
+# Evince 4.0 (49) is not supported ATM
 %configure \
 	--disable-static \
 	--enable-aubio \
@@ -111,9 +113,7 @@ install -m 0644 %{SOURCE1} .
 	--enable-portaudio \
 	--enable-portmidi \
 	--enable-rubberband \
-	--enable-gtk3 \
-	--enable-evince \
-	--enable-x11 \
+	--disable-evince \
 	--enable-doc \
 	--enable-gtk-doc \
 	--enable-gtk-doc-html \
@@ -122,7 +122,6 @@ install -m 0644 %{SOURCE1} .
 %make_build
 
 chmod 644 actions/*.scm
-chrpath -d src/%{name}
 
 
 %install
